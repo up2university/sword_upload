@@ -390,16 +390,16 @@ class repository_sword_upload extends repository {
         $language->id = 's_language';
         $language->options = array(
             (object)array(
-                'value' => 'pt_BR',
-                'label' => 'Português'
+                'value' => 'en',
+                'label' => 'English'
             ),
             (object)array(
                 'value' => 'en_US',
                 'label' => 'English (United States)'
             ),
             (object)array(
-                'value' => 'en',
-                'label' => 'English'
+                'value' => 'pt_BR',
+                'label' => 'Português'
             ),
             (object)array(
                 'value' => 'es',
@@ -644,7 +644,7 @@ class repository_sword_upload extends repository {
             );
 
         } else {
-            throw new moodle_exception('upload_error','sword_upload_repositpry');
+            throw new moodle_exception('upload_error','sword_upload_repository');
         }
 
     }
@@ -812,7 +812,7 @@ class repository_sword_upload extends repository {
             );
 
         } else {
-            throw new moodle_exception('upload_error','sword_upload_repositpry');
+            throw new moodle_exception('upload_error','sword_upload_repository');
         }
 
     }
