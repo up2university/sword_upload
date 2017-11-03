@@ -32,42 +32,42 @@
 //$string['keyword'] = 'Keyword';
 
 $string['sword_url'] = 'URL SWORD';
-$string['swordurltext'] = 'A URL SWORD deve ser no formato: http://seusite.com/swordv2/servicedocument';
-$string['alfresco:view'] = 'Ver Repositório SWORD Upload';
-$string['configplugin'] = 'Configuração SWORD Upload';
-$string['notitle'] = 'Sem título';
+$string['swordurltext'] = 'The SWORD URL must be in the format: http://seusite.com/swordv2/servicedocument';
+$string['alfresco:view'] = 'View SWORD Upload Repository';
+$string['configplugin'] = 'SWORD Upload Configuration';
+$string['notitle'] = 'Untitled';
 
-$string['pluginname_help'] = 'Um plug-in para repositórios com  SWORD';
-$string['pluginname'] = 'Repositório SWORD Upload';
+$string['pluginname_help'] = 'A plug-in for SWORD repositories';
+$string['pluginname'] = 'SWORD Upload Repository';
 //$string['soapmustbeenabled'] = 'SOAP extension must be enabled for sword upload plugin';
 //$string['space'] = 'Space';
 
 //Login
-$string['username'] = 'Usuário';
-$string['password'] = 'Senha';
-$string['send'] = 'Enviar';
+$string['username'] = 'Username';
+$string['password'] = 'Password';
+$string['send'] = 'Send';
 
 $string['click-to-link'] = 'Click to link in Moodle';
 
 //Deposit
-$string['title'] = 'Título';
-$string['abstract'] = 'Resumo';
-$string['description'] = 'Descrição';
-$string['language'] = 'Idioma';
-$string['type'] = 'Tipo';
-$string['subject'] = 'Assunto (Separe cada com ";")';
-$string['collection'] = 'Coleção';
-$string['content'] = 'Referatório / Repositório';
-$string['upload-url'] = 'Envia um link (referatório)';
-$string['upload-file'] = 'Envia um arquivo (repositório)';
+$string['title'] = 'Title';
+$string['abstract'] = 'Abstract';
+$string['description'] = 'Description';
+$string['language'] = 'Language';
+$string['type'] = 'TYpe';
+$string['subject'] = 'Subject (Separate each with ";")';
+$string['collection'] = 'Collection';
+$string['content'] = 'Referatory / Repository';
+$string['upload-url'] = 'Send a link (referatory)';
+$string['upload-file'] = 'Send a file (repository)';
 $string['url'] = 'URL';
-$string['file'] = 'Arquivo';
-$string['next'] = 'Próximo';
-$string['author'] = 'Autor (Separe cada com ";")';
-$string['license'] = 'Licença';
-$string['license-unknown'] = 'Outro';
+$string['file'] = 'Archive';
+$string['next'] = 'Next';
+$string['author'] = 'Author (Separate each with ;")';
+$string['license'] = 'License';
+$string['license-unknown'] = 'Other';
 $string['license-allrightsreserved'] = 'All rights reserved';
-$string['license-public'] = 'Domínio Público';
+$string['license-public'] = 'Public Domain';
 $string['license-cc'] = 'Creative Commons';
 $string['license-cc-nd'] = 'Creative Commons - NoDerivs';
 $string['license-cc-nc-nd'] = 'Creative Commons - No Commercial NoDerivs';
@@ -75,6 +75,6 @@ $string['license-cc-nc'] = 'Creative Commons - No Commercial';
 $string['license-cc-nc-sa'] = 'Creative Commons - No Commercial ShareAlike';
 $string['license-cc-sa'] = 'Creative Commons - ShareAlike';
 
-$string['upload_error'] = 'Ocorreu um erro inesperado, tente mais tarde.';
+$string['upload_error'] = 'An unexpected error occured, please try again later.';
 
 
