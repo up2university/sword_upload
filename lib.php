@@ -76,8 +76,6 @@ class repository_sword_upload extends repository {
         $ret = array();
         $form = array();
 
-      //  if (isset($SESSION->etapa) OR !$nao_login) {
-
             $username = new stdClass();
             $username->type = 'text';
             $username->id   = 's_username';
@@ -101,22 +99,6 @@ class repository_sword_upload extends repository {
             $form[] = $action;
 
             $ret['login_btn_label'] = get_string('send', 'repository_sword_upload');
-
- /*       }
-        else {
-            $SESSION->etapa = 'instructions';
-            //echo get_string('instructions', 'repository_sword_upload'); exit;
-            $instructions = new stdClass();
-            $instructions->type = 'hidden';
-            $instructions->id = 'div-instructions';
-            $instructions->name = 's_action';
-            $instructions->value = 'instructions';
-            $instructions->label = getInstructions();
-            //echo $INSTRUCTIONS_TEXT; exit;
-            //print_r(licences_select_moodle()); exit;
-            $form[] = $instructions;
-            $ret['login_btn_label'] = get_string('next', 'repository_sword_upload');
-        } */
 
         $ret['login'] = $form;
         return $ret;
