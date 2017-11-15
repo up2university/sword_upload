@@ -23,24 +23,14 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-//$string['configplugin'] = 'SWORD upload configuration';
-//$string['licensekey'] = 'License Key';
-//$string['pluginname'] = 'SWORD Upload';
-//$string['pluginname_help'] = 'SWORD Upload';
-//$string['cesta:view'] = 'View SWORD Upload';
-
-//$string['keyword'] = 'Keyword';
-
 $string['sword_url'] = 'URL SWORD';
-$string['swordurltext'] = 'The SWORD URL must be in the format: http://seusite.com/swordv2/servicedocument';
+$string['swordurltext'] = 'The SWORD URL must be in the format: http://localhost:8080/swordv2/servicedocument';
 $string['alfresco:view'] = 'View SWORD Upload Repository';
 $string['configplugin'] = 'SWORD Upload Configuration';
 $string['notitle'] = 'Untitled';
 
 $string['pluginname_help'] = 'A plug-in for SWORD repositories';
 $string['pluginname'] = 'SWORD Upload Repository';
-//$string['soapmustbeenabled'] = 'SOAP extension must be enabled for sword upload plugin';
-//$string['space'] = 'Space';
 
 //Login
 $string['username'] = 'Username';
