@@ -24,6 +24,8 @@
  */
 
 $string['sword_url'] = 'URL SWORD';
+$string['sword_username'] = 'SWORD Username';
+$string['sword_password'] = 'SWORD Password';
 $string['swordurltext'] = 'The SWORD URL must be in the format: http://localhost:8080/swordv2/servicedocument';
 $string['alfresco:view'] = 'View SWORD Upload Repository';
 $string['configplugin'] = 'SWORD Upload Configuration';

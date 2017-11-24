@@ -45,10 +45,7 @@ class repository_sword_upload extends repository {
         if (optional_param('action','',PARAM_RAW) == 'upload') {
             $action = 'deposit-upload';
         }
-       // echo $action.' | ';
-       // echo optional_param('action','',PARAM_RAW); exit;
         if (isset($action) AND !empty($action)) {
-            //echo 'entrou no if4'; exit;
             switch ($action) {
 
                 case 'deposit-metadata':
@@ -61,47 +58,11 @@ class repository_sword_upload extends repository {
 
             }
 
-            //unset($SESSION->etapa);
 
         } else {
-            //echo 'entrou no if 3';exit;
             $this->logout();
         }
 
-    }
-
-    public function print_login($nao_login = true) {
-
-        global $SESSION;
-        $ret = array();
-        $form = array();
-
-            $username = new stdClass();
-            $username->type = 'text';
-            $username->id   = 's_username';
-            $username->name = 's_username';
-            $username->label = get_string('username', 'repository_sword_upload');
-	    $username->attributes = array('size'=>'16');
-            $form[] = $username;
-
-            $password = new stdClass();
-            $password->type = 'password';
-            $password->id   = 's_password';//campo id do input de busca do form
-            $password->name = 's_password'; //campo name do input de busca do form
-            $password->label = get_string('password', 'repository_sword_upload');
-            $form[] = $password;
-
-            $action = new stdClass();
-            $action->type = 'hidden';
-            $action->id   = 's_action';
-            $action->name = 's_action';
-            $action->value= 'login';
-            $form[] = $action;
-
-            $ret['login_btn_label'] = get_string('send', 'repository_sword_upload');
-
-        $ret['login'] = $form;
-        return $ret;
     }
 
     public function check_login() {
@@ -114,9 +75,9 @@ class repository_sword_upload extends repository {
         if (isset($SESSION->collections)) {
             return true;
         } else {
-            $SESSION->username   = optional_param('s_username', '', PARAM_RAW);
-            $SESSION->password   = optional_param('s_password', '', PARAM_RAW);
 
+            $SESSION->username   = $this->options['sword_username'];
+            $SESSION->password   = $this->options['sword_password'];
             if (!empty($SESSION->username) AND !empty($SESSION->password)) {
                 $this->serviceDocument = $this->swordAppClient->servicedocument($this->options['sword_url'], $SESSION->username, $SESSION->password, $SESSION->username);
                 if ($this->serviceDocument->sac_status == 200) {
@@ -138,13 +99,9 @@ class repository_sword_upload extends repository {
 
                 }
             }
-            //echo ' entrou no login | ';
-            // echo ''
             if (isset($SESSION->etapa) AND $SESSION->etapa == 'instructions') {
-              //  echo ' entrou no if | ';
                 return false;
             } else {
-               // echo ' entrou no else | ';
                 unset($SESSION->username);
                 unset($SESSION->password);
                 unset($SESSION->collections);
@@ -153,15 +110,6 @@ class repository_sword_upload extends repository {
                 unset($this->serviceDocument);
                 return false;
             }
-
-            //unset($SESSION->username);
-            //unset($SESSION->password);
-            //unset($SESSION->collections);
-            //unset($SESSION->etapa);
-            //unset($SESSION->entry);
-            //unset($this->serviceDocument);
-           
-
 
         }
     }
@@ -173,7 +121,6 @@ class repository_sword_upload extends repository {
         unset($SESSION->password);
         unset($SESSION->collections);
         unset($SESSION->etapa);
-        //echo ' entrou no logout | (valor do $SESSION->etapa:'.$SESSION->etapa;
         unset($SESSION->entry);
         unset($this->serviceDocument);
         $this->print_login(false);
@@ -193,11 +140,10 @@ class repository_sword_upload extends repository {
         $ret = array();
         $ret['nosearch'] = true;
         $ret['norefresh'] = true;
-        //$ret['nologin'] = false;
-        //$ret['logouttext'] = 'Logout';
         $ret['login_btn_label'] = get_string('next', 'repository_sword_upload');
 
 	$this->get_link("http://poa.ifrs.edu.br");
+	if($this->login()){
         switch ($SESSION->etapa) {
 
             case 'deposit-metadata':
@@ -226,7 +172,8 @@ class repository_sword_upload extends repository {
             default:
                 break;
 
-        }
+	}
+	}
 
         return $ret;
     }
@@ -464,13 +411,13 @@ class repository_sword_upload extends repository {
 
         $form = array();
 
-        $author = new stdClass();
-        $author->type = 'text';
-        $author->id = 's_author';
-        $author->name = 's_author';
-	$author->value = $fullname;
-        $author->label = get_string('author', 'repository_sword_upload');
-        $form[] = $author;
+        //$author = new stdClass();
+        //$author->type = 'text';
+        //$author->id = 's_author';
+        //$author->name = 's_author';
+	//$author->value = $fullname;
+        //$author->label = get_string('author', 'repository_sword_upload');
+        //$form[] = $author;
 
         $url = new stdClass();
         $url->type = 'text';
@@ -805,7 +752,7 @@ class repository_sword_upload extends repository {
      * @return array
      */
     public static function get_instance_option_names() {
-        return array('sword_url');
+        return array('sword_url', 'sword_username', 'sword_password');
     }
 
     /**
@@ -814,9 +761,14 @@ class repository_sword_upload extends repository {
      * @return bool
      */
     public static function instance_config_form($mform) {
-        $mform->addElement('text', 'sword_url', get_string('sword_url', 'repository_sword_upload'));
+        $mform->addElement('text', 'sword_url', get_string('sword_url', 'repository_sword_upload'), array('size' => '40') );
+        $mform->addElement('text', 'sword_username', get_string('sword_username', 'repository_sword_upload'), array('size' => '40') );
+        $mform->addElement('password', 'sword_password', get_string('sword_password', 'repository_sword_upload'), array('size' => '40') );
+
         $mform->addElement('static', 'sword_url_intro', '', get_string('swordurltext', 'repository_sword_upload'));
         $mform->addRule('sword_url', get_string('required'), 'required', null, 'client');
+        $mform->addRule('sword_username', get_string('required'), 'required', null, 'client');
+        $mform->addRule('sword_password', get_string('required'), 'required', null, 'client');
         return true;
     }
 
