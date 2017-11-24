@@ -23,7 +23,7 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['sword_url'] = 'URL SWORD';
+$string['sword_url'] = 'SWORD URL';
 $string['sword_username'] = 'SWORD Username';
 $string['sword_password'] = 'SWORD Password';
 $string['swordurltext'] = 'The SWORD URL must be in the format: http://localhost:8080/swordv2/servicedocument';
