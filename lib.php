@@ -143,38 +143,36 @@ class repository_sword_upload extends repository {
         $ret['nosearch'] = true;
         $ret['norefresh'] = true;
         $ret['login_btn_label'] = get_string('next', 'repository_sword_upload');
-
-	$this->get_link("http://poa.ifrs.edu.br");
 	if($this->login()){
-        switch ($SESSION->etapa) {
+		switch ($SESSION->etapa) {
 
-            case 'deposit-metadata':
-                $ret['login'] = $this->print_deposit_metadata();
-                break;
+		    case 'deposit-metadata':
+			$ret['login'] = $this->print_deposit_metadata();
+			break;
 
-            case 'deposit-upload':
-                $ret['upload'] = array(
-                    'id' => 'file',
-                    'label' => get_string('file', 'repository_sword_upload')
-                );
-                break;
+		    case 'deposit-upload':
+			$ret['upload'] = array(
+			    'id' => 'file',
+			    'label' => get_string('file', 'repository_sword_upload')
+			);
+			break;
 
-            case 'deposit-link':
-                $ret['login'] =  $this->print_deposit_link();
-                break;
+		    case 'deposit-link':
+			$ret['login'] =  $this->print_deposit_link();
+			break;
 
-            case 'deposit-process':
-                $list = array();
-                $list[] = $this->deposit_process();
-                $ret['list'] = $list;
-	
-                return $ret;
-                break;
+		    case 'deposit-process':
+			$list = array();
+			$list[] = $this->deposit_process();
+			$ret['list'] = $list;
+		
+			return $ret;
+			break;
 
-            default:
-                break;
+		    default:
+			break;
 
-	}
+		}
 	}
 
         return $ret;
@@ -653,7 +651,7 @@ class repository_sword_upload extends repository {
         require_once($CFG->dirroot . '/repository/sword_upload/sword1/utils.php');
 
         $license = trim(optional_param('license','',PARAM_RAW));
-        $author = trim($this->fullname);
+	$author = trim($this->fullname);
 
         if (empty($saveas_filename)) {
             $filename = $_FILES['repo_upload_file']['name'];
