@@ -29,6 +29,10 @@ class SWORDAPPClient {
 			array_push($headers, "X-On-Behalf-Of: " . $sac_obo);
 	        }
 	        curl_setopt($sac_curl, CURLOPT_HTTPHEADER, $headers);	
+	        if (strpos($sac_url, 'https') !== false) {
+         	       curl_setopt($sac_curl, CURLOPT_SSL_VERIFYPEER, false);
+       		}
+		
 		$sac_resp = curl_exec($sac_curl);
 	        $sac_status = curl_getinfo($sac_curl, CURLINFO_HTTP_CODE);
 		curl_close($sac_curl);
@@ -62,6 +66,9 @@ class SWORDAPPClient {
 		curl_setopt($sac_curl, CURLOPT_URL, $sac_url);
 		curl_setopt($sac_curl, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($sac_curl, CURLOPT_POST, true);
+	        if (strpos($sac_url, 'https') !== false) {
+         	       curl_setopt($sac_curl, CURLOPT_SSL_VERIFYPEER, false);
+       		}
 		if(!empty($sac_u) && !empty($sac_p)) {
 	                curl_setopt($sac_curl, CURLOPT_USERPWD, $sac_u . ":" . $sac_p);
 	        }
