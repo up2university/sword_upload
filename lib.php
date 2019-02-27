@@ -148,6 +148,7 @@ class repository_sword_upload extends repository {
 
 		    case 'deposit-metadata':
 			$ret['login'] = $this->print_deposit_metadata();
+			 $ret['object'] = array('type' => 'text/html', 'src' => 'testaki');
 			break;
 
 		    case 'deposit-upload':
@@ -183,10 +184,6 @@ class repository_sword_upload extends repository {
         global $SESSION;
 
         $form = array();
-	 
-	
-	echo '<h1>You must fill all fields.</h1>';    
-	
 	    
         $title = new stdClass();
         $title->type = 'text';
