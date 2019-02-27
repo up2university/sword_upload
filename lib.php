@@ -148,7 +148,6 @@ class repository_sword_upload extends repository {
 
 		    case 'deposit-metadata':
 			$ret['login'] = $this->print_deposit_metadata();
-			 $ret['object'] = array('type' => 'text/html', 'src' => 'testaki');
 			break;
 
 		    case 'deposit-upload':
