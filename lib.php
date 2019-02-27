@@ -188,7 +188,7 @@ class repository_sword_upload extends repository {
         $title->type = 'text';
         $title->id = 's_title';
         $title->name = 's_title';
-        $title->label = get_string('title', 'repository_sword_upload');
+        $title->label = get_string('title', 'repository_sword_upload')."<h1>Gia pame ligo hype!!!</h1>";
         $form[] = $title;
 
         $abstract = new stdClass();
