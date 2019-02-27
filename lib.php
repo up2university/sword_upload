@@ -183,7 +183,14 @@ class repository_sword_upload extends repository {
         global $SESSION;
 
         $form = array();
-
+	    
+	$msg=new stdClass();
+	$msg->type='display';
+	$msg->id = 's_msg';
+        $msg->name = 's_msg';
+        $msg->value= 'You must fill all fields.';    
+	$form[]=$msg;    
+	    
         $title = new stdClass();
         $title->type = 'text';
         $title->id = 's_title';
