@@ -188,21 +188,25 @@ class repository_sword_upload extends repository {
         $title->type = 'text';
         $title->id = 's_title';
         $title->name = 's_title';
-        $title->label = get_string('title', 'repository_sword_upload')."<h1>Gia pame ligo hype!!!</h1>";
+	    if($_SESSION->nofilled==true)
+		    $nofilled="<div style=\"color:red\">You must fill all fields in order to proceed.</div>";
+	    else
+		    $nofilled="";
+        $title->label = $nofilled.get_string('title', 'repository_sword_upload')."<span style=\"color:red\">(*)</span>";
         $form[] = $title;
 
         $abstract = new stdClass();
         $abstract->type = 'text';
         $abstract->id = 's_abstract';
         $abstract->name = 's_abstract';
-        $abstract->label = get_string('abstract', 'repository_sword_upload');
+        $abstract->label = get_string('abstract', 'repository_sword_upload')."<span style=\"color:red\">(*)</span>";
         $form[] = $abstract;
 
         $description = new stdClass();
         $description->type = 'text';
         $description->id = 's_description';
         $description->name = 's_description';
-        $description->label = get_string('description', 'repository_sword_upload');
+        $description->label = get_string('description', 'repository_sword_upload')."<span style=\"color:red\">(*)</span>";
 	$description->rows = 20;
         $form[] = $description;
 
@@ -210,7 +214,7 @@ class repository_sword_upload extends repository {
         $type->type = 'select';
         $type->id = 's_type';
         $type->name = 's_type';
-        $type->label = get_string('type', 'repository_sword_upload');
+        $type->label = get_string('type', 'repository_sword_upload')."<span style=\"color:red\">(*)</span>";
         $type->options = array(
             (object)array(
                 'value' => 'Animation',
@@ -309,12 +313,12 @@ class repository_sword_upload extends repository {
         $subject->type = 'text';
         $subject->id = 's_subject';
         $subject->name = 's_subject';
-        $subject->label = get_string('subject', 'repository_sword_upload');
+        $subject->label = get_string('subject', 'repository_sword_upload')."<span style=\"color:red\">(*)</span>";
         $form[] = $subject;
 
         $language = new stdClass();
         $language->type = 'select';
-        $language->label = get_string('language', 'repository_sword_upload');
+        $language->label = get_string('language', 'repository_sword_upload')."<span style=\"color:red\">(*)</span>";
         $language->name = 's_language';
         $language->id = 's_language';
         $language->options = array(
@@ -363,7 +367,7 @@ class repository_sword_upload extends repository {
 
         $collection = new stdClass();
         $collection->type = 'select';
-        $collection->label = get_string('collection', 'repository_sword_upload');
+        $collection->label = get_string('collection', 'repository_sword_upload')."<span style=\"color:red\">(*)</span>";
         $collection->name = 's_collection';
         $collection->id = 's_collection';
         $collections = array();
@@ -378,7 +382,7 @@ class repository_sword_upload extends repository {
 
         $content = new stdClass();
         $content->type = 'select';
-        $content->label = get_string('content', 'repository_sword_upload');
+        $content->label = get_string('content', 'repository_sword_upload')."<span style=\"color:red\">(*)</span>";
         $content->name = 's_content';
         $content->id = 's_content';
         $content->options = array(
