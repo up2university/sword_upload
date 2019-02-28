@@ -188,10 +188,10 @@ class repository_sword_upload extends repository {
         $title->type = 'text';
         $title->id = 's_title';
         $title->name = 's_title';
-	    if($_SESSION->nofilled==true)
+	    if(isset($SESSION->nofilled) AND $SESSION->nofilled==true)
 		    $nofilled="<div style=\"color:red\">You must fill all fields in order to proceed.</div>";
 	    else
-		    $nofilled="";
+		    $nofilled="<div style=\"color:red\">All fields are required.</div>";
         $title->label = $nofilled.get_string('title', 'repository_sword_upload')."<span style=\"color:red\">(*)</span>";
         $form[] = $title;
 
@@ -473,6 +473,7 @@ class repository_sword_upload extends repository {
             }
 
         } else {
+		$SESSION->nofilled=true;
             $SESSION->etapa = 'deposit-metadata';
         }
 
