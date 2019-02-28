@@ -110,6 +110,7 @@ class repository_sword_upload extends repository {
                 unset($SESSION->etapa);
                 unset($SESSION->entry);
                 unset($this->serviceDocument);
+		unset($SESSION->nofilled);
                 return false;
             }
 
@@ -454,7 +455,7 @@ class repository_sword_upload extends repository {
         if (!empty($title) AND !empty($abstract) AND !empty($collection) AND !empty($content) AND !empty($language) AND !empty($type) AND !empty($subject)) {
             $types = explode(';',$type);
             $subjects = explode(';',$subject);
-
+	    $SESSION->nofilled=false;
             $SESSION->entry = array(
                 'title' => $title,
                 'abstract' => $abstract,
